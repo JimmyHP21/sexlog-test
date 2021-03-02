@@ -1,11 +1,15 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
-import {SampleComponent} from './home/sample/sample.component';
+import {SampleComponent} from './main/sample/sample.component';
 
 const routes: Routes = [
   {
     path: '',
     component: SampleComponent
+  },
+  {
+    path: 'repo',
+    loadChildren: () => import('./main/repository/repository.module').then((m) => m.RepositoryModule)
   }
 ];
 

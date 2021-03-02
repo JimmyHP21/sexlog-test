@@ -12,9 +12,12 @@ export class SampleComponent implements OnInit {
   @ViewChild('filter', {static: true})
   filter: ElementRef;
 
+  userGit: any;
+
   selectOptions = [];
   selectedFilter = '';
 
+  isLoadingData: boolean;
   // Private
   private _unsubscribeAll: Subject<any>;
   constructor(private _gitService: GithubService) {
@@ -25,17 +28,19 @@ export class SampleComponent implements OnInit {
     fromEvent(this.filter.nativeElement, 'keyup')
       .pipe(
         takeUntil(this._unsubscribeAll),
-        debounceTime(250),
+        debounceTime(300),
         distinctUntilChanged()
       ).subscribe(() => {
         if (this.filter.nativeElement.value.length > 4) {
+          this.isLoadingData = true;
           const filterValue = this.filter.nativeElement.value;
           this._gitService
-            .searchUser(filterValue)
+            .searchUsers(filterValue)
             .subscribe((data) => {
-              console.log(data);
+              this.isLoadingData = false;
+              this.userGit = data;
             }, (error) => {
-              console.log(error);
+              this.isLoadingData = false;
             });
         }
     });

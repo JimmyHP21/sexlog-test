@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {SampleComponent} from './home/sample/sample.component';
+import {SampleComponent} from './main/sample/sample.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutComponent} from './layout/layout.component';
 import {MaterialModule} from './material/material.module';
@@ -14,6 +14,7 @@ import { SidenavListComponent } from './layout/sidenav-list/sidenav-list.compone
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CardGitComponent } from './main/components/card-git/card-git.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     SampleComponent,
     LayoutComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    CardGitComponent
   ],
   imports: [
     BrowserModule,

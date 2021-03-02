@@ -10,12 +10,20 @@ export class GithubService {
 
   constructor(private _http: HttpClient) {}
 
-  searchUser(username: string): Observable<any> {
-    return this._http.get<any>(this.apiURL + username)
+  searchUsers(username: string): Observable<any> {
+    return this._http.get<any>(this.apiURL + 'users/' + username)
     .pipe(
       retry(2),
       catchError(this.handleError)
     );
+  }
+
+  searchRepoList(url: string): Observable<any> {
+    return this._http.get<any>(url + '?sort=stargazers_count')
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
   }
 
   // Manipulação de erros
