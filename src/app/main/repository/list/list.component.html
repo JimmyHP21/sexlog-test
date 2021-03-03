@@ -53,8 +53,8 @@
         </button>
         <mat-menu #moreMenu="matMenu">
           <button mat-menu-item aria-label="remove" [routerLink]="'/repo/details/' + menu.owner.login + '/' + menu.name">
-            <mat-icon>edit</mat-icon>
-            <span>Editar</span>
+            <mat-icon>subtitles</mat-icon>
+            <span>Details</span>
           </button>
         </mat-menu>
 
@@ -63,7 +63,7 @@
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
-    <mat-row *matRowDef="let menu; columns: displayedColumns;" class="product" matRipple [routerLink]="">
+    <mat-row *matRowDef="let menu; columns: displayedColumns;" class="product">
     </mat-row>
   </mat-table>
 
