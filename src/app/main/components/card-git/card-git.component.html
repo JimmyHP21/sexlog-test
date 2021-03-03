@@ -6,7 +6,7 @@
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">
-      <div class="profile-card__name">{{gitUser ? gitUser.login : ''}}</div>
+      <div class="profile-card__name">{{gitUser ? gitUser.login : '' | titlecase}}</div>
       <div class="profile-card__txt">{{gitUser ? gitUser.bio || gitUser.company : ''}}</div>
       <div class="profile-card__txt">{{gitUser ? gitUser.email : ''}}</div>
       <div class="profile-card-loc" *ngIf="gitUser ? gitUser.location : false">
