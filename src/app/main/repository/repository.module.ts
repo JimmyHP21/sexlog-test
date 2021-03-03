@@ -8,6 +8,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatRippleModule} from '@angular/material/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { DetailsComponent } from './details/details.component';
+import {ListService} from './list/service/list.service';
+import {DetailsService} from './details/service/details.service';
 
 @NgModule({
   imports: [
@@ -21,6 +23,6 @@ import { DetailsComponent } from './details/details.component';
   ],
   declarations: [ListComponent, DetailsComponent],
   exports: [],
-  providers: []
+  providers: [ListService, DetailsService]
 })
 export class RepositoryModule { }

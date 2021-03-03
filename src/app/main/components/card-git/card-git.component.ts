@@ -20,9 +20,4 @@ export class CardGitComponent implements OnInit {
   goToGitPage(url): void {
     window.location.href = url;
   }
-
-  goToListRepo(url): void {
-    localStorage.setItem('urlRepo', url);
-    this._router.navigateByUrl('/repo', {});
-  }
 }

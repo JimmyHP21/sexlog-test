@@ -1,0 +1,25 @@
+<div class="header-page">
+  <button mat-icon-button class="fa-secondary" (click)="goBack()">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+  Repository details > {{dataToEdit.name | titlecase}}
+</div>
+
+<div class="blog-slider">
+  <div class="blog-slider__wrp swiper-wrapper">
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        <img src="{{dataToEdit.owner.avatar_url}}" alt="">
+    </div>
+      <div class="blog-slider__content">
+        <span class="blog-slider__code">{{dataToEdit.owner.login | titlecase}}</span>
+        <div class="blog-slider__title">{{dataToEdit.name}}</div>
+        <div class="blog-slider__text">{{dataToEdit.description}}</div>
+        <div class="blog-slider__star"> <mat-icon>stars</mat-icon> {{dataToEdit.stargazers_count}} </div>
+        <div class="blog-slider__text">{{dataToEdit.language}} </div>
+        <a href="{{dataToEdit.html_url}}" target="_blank" class="blog-slider__button">Repository page</a>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import {Component, ElementRef, Injectable, OnInit, ViewChild} from '@angular/core';
 import {fromEvent, Subject} from 'rxjs';
 import {debounce, debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
-import {GithubService} from '../../service/github.service';
+import {GithubService} from './service/github.service';
 
 @Component({
   selector: 'app-sample',

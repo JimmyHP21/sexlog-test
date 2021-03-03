@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import {Observable, pipe, throwError} from 'rxjs';
+import {environment} from '../../../../environments/environment';
+import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -16,14 +16,6 @@ export class GithubService {
       retry(2),
       catchError(this.handleError)
     );
-  }
-
-  searchRepoList(url: string): Observable<any> {
-    return this._http.get<any>(url + '?sort=stargazers_count')
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
   }
 
   // Manipulação de erros

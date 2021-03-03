@@ -52,7 +52,7 @@
 
       <div class="profile-card-ctr">
         <button class="profile-card__button button--gray" (click)="goToGitPage(gitUser ? gitUser.html_url : '#')">Go to Git</button>
-        <button class="profile-card__button button--orange" (click)="goToListRepo(gitUser ? gitUser.repos_url : '#')">Go to repository List</button>
+        <button class="profile-card__button button--orange" [routerLink]="'/repo/' + gitUser.login">Go to repository List</button>
       </div>
     </div>
   </div>

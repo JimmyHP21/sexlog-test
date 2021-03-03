@@ -1,0 +1,82 @@
+<div class="header-page">
+  <button mat-icon-button class="fa-secondary" (click)="goBack()">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+  List of repository
+</div>
+
+<!-- CONTENT CARD -->
+<div class="content-card">
+
+  <mat-table class="products-table" [dataSource]="dataSource" matSort>
+
+    <!-- id number Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex.md="120px" fxFlex.gt-lg="130px" fxFlex.lg="130px" fxFlex.sm="120px" fxFlex.xs="115px">ID</mat-header-cell>
+      <mat-cell *matCellDef="let menu" fxFlex.md="120px" fxFlex.lg="130px" fxFlex.gt-lg="130px" fxFlex.sm="120px" fxFlex.xs="115px">
+        <p class="text-truncate">{{menu.id}}</p>
+      </mat-cell>
+    </ng-container>
+
+
+    <!-- title Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let menu">
+        <p class="text-truncate">{{menu.name}}</p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- private -->
+    <ng-container matColumnDef="private">
+      <mat-header-cell *matHeaderCellDef fxHide.sm fxHide.xs>Private</mat-header-cell>
+      <mat-cell *matCellDef="let menu" fxHide.sm fxHide.xs>
+        <mat-icon class="secondary-text">{{menu.private ? 'lock' : 'lock_open'}}</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <!-- idPai Column -->
+    <ng-container matColumnDef="stars">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex.sm="90px" fxFlex.xs="30px" fxFlex.lt-sm="60px">Stars</mat-header-cell>
+      <mat-cell *matCellDef="let menu" fxFlex.sm="90px" fxFlex.xs="30px" fxFlex.lt-sm="60px">
+        <p class="review-rating">
+          {{menu.stargazers_count}}
+        </p>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef [ngClass]="'wd-50'"></mat-header-cell>
+      <mat-cell *matCellDef="let menu" [ngClass]="'wd-50'">
+        <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation();">
+          <mat-icon class="secondary-text">more_vert</mat-icon>
+        </button>
+        <mat-menu #moreMenu="matMenu">
+          <button mat-menu-item aria-label="remove" [routerLink]="'/repo/details/' + menu.owner.login + '/' + menu.name">
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+          </button>
+        </mat-menu>
+
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+    <mat-row *matRowDef="let menu; columns: displayedColumns;" class="product" matRipple [routerLink]="">
+    </mat-row>
+  </mat-table>
+
+  <div *ngIf="dataSource.filteredData.length < 1" style="padding-top: 3px; padding-left: 45%">
+    <tr style="color: #6944ff">Not repository finder :(</tr>
+  </div>
+
+  <mat-paginator [length]="dataSource.filteredData.length"
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 showFirstLastButtons>
+  </mat-paginator>
+</div>
+<!-- / CONTENT CARD -->
+
